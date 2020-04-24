@@ -2,12 +2,12 @@ import React from 'react';
 
 import './header.css';
 
-const Header = ({carName}) => {
+const Header = () => {
     
     return (
         <div className="row">
             <div className="col">
-                <h1>{carName.label}</h1>
+                <h1>Car Application</h1>
             </div>
         </div>
     )

@@ -1,31 +1,87 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 
 import './item-details.css';
 
-const ItemDetails = ({carDetails}) => {
+export default class ItemDetails extends Component {
 
+   state = {
+        phoneVisibility: false
+   };
+
+
+   onItemPhoneVisibile = () => {
+        this.setState (({phoneVisibility}) => {
+            return {
+                phoneVisibility: !phoneVisibility
+            };
+        })
+    };
+
+    // onItemModalVisible = () => {
+    //     this.setState(({modalStatus}) => {
+    //         return {
+    //             modalStatus: !modalStatus
+    //         }
+    //     })
+    // };
    
+    render() {
 
-    return (
-        <div className="item-details">
-            <h5>Car details</h5>
-            <ul>
-                <li>Model - <strong>{carDetails.model}</strong></li>
-                <li>Year - <strong>{carDetails.year}</strong></li>
-                <li>Owner - <strong>{carDetails.owner}</strong></li>
-            </ul>
+        const { carDetails, selected, modalStatus , onModalShow} = this.props;
 
-            {/* <div class="phone-block">
-                <transition name="phone">		
-                    <p v-if="phoneVisibility">{{car.phone}}</p>
-                </transition>
-            </div> */}
+        const {phoneVisibility} = this.state;
 
-            <button className="btn btn-outline-success mr-3" >Show me</button>
-            <button className="btn btn-primary" >Buy</button>
+        let phoneClassName = 'phone';
 
-        </div>
-    );
+       
+
+    //    if(phoneVisibility) {
+    //        phoneClassName += ' phone-enter-active'
+    //    }
+        
+       
+
+        const filteredInfo = carDetails.filter((item) => item.id === selected)
+                .map((item) =>{
+                    return(
+                        <div key={item.id}>
+                            <ul key = {item.id}>
+                                <li>Model - <strong>{item.model}</strong></li>
+                                <li>Year - <strong>{item.year}</strong></li>
+                                <li>Owner - <strong>{item.owner}</strong></li>
+                            </ul>
+                            <div className="phone-block">
+                                <span className = {phoneClassName} >		
+                                    <p>{ phoneVisibility ? item.phoneNumber : null} </p>
+                                </span>
+                            </div>
+                        </div>
+                    )
+                });
+
+
+       
+
+        return (
+            <div className="item-details">
+                <h5>Car details</h5>
+                {filteredInfo}
+                
+                <button 
+                    className="btn btn-outline-success mr-3" 
+                    onClick = {this.onItemPhoneVisibile}>{phoneVisibility ? 'Hide me' : 'Show me'}
+                </button>
+                <button 
+                    className="btn btn-primary" 
+                    onClick = {() => onModalShow(modalStatus) }
+                    >
+                        Buy
+                </button>
+               
+            </div>
+        );
+    }
+   
 };
 
-export default ItemDetails;

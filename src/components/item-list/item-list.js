@@ -4,29 +4,30 @@ import ItemListOption from '../item-list-option';
 
 import './item-list.css';
 
-const ItemList = ({carInfo}) => {
+export default class ItemList extends Component {
 
-        const elements = carInfo.map((item) => {
 
+        render() {
             
+            const {carInfo, onItemSelect, selected} = this.props;
+            const elements = carInfo.map((item) => {
 
-            return (
-                <li key={item.id} className="list-group-item list-group-item-action pointer">
+                return (
                     <ItemListOption
+                        key = {item.id}
                         label = {item.label}
                         model = {item.model}
+                        id = {item.id}
+                        selected = {item.id === selected}
+                        onItemClick={() => onItemSelect(item.id)}
                     />
-                </li>
-            )
-        });
-
-   
-        return(
-            <ul className="list-group">
-               {elements}
-            </ul>
-        );
-    
+                )
+            });
+            return(
+                <ul className="list-group">
+                   {elements}
+                </ul>
+            );
+        };
 }
 
-export default ItemList;

@@ -4,24 +4,24 @@ import './item-image.css';
 
 
 
-const ItemImage = ({carImage}) => {
+const ItemImage = ({carImage, selected}) => {
 
-    // const url = carImage.map((itemImage) => {
-    //     console.log(itemImage);
-    //     return(
-            
-    //         <img key={itemImage.id} src={itemImage.imageUrl} className="rounded detailed-car-image img-responsive pr-3" alt="Car Image"/>
-    //     );
-    // });
 
+    const filteredImage = carImage.filter((item) => item.id === selected)
+            .map((item) =>{
+                return(
+                    <div key={item.id}>
+                        <h2>{item.label}</h2>
+                        <img src={item.imageUrl} alt={item.label} className="rounded detailed-car-image img-responsive pr-3" />
+                    </div>
+                )
+            })
   
    
 
     return(
         <div>
-            <h2>Car Name</h2>
-			{/* {url} */}
-            <img src={carImage.imageUrl} className="rounded detailed-car-image img-responsive pr-3" alt="Car Image"/>
+            {filteredImage}
         </div>
     );
 };

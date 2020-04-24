@@ -1,0 +1,17 @@
+.phone-block{
+	height:36px;
+}
+
+.phone{
+    transform: translateX(-50px);
+    transition: all .5s step-end;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
