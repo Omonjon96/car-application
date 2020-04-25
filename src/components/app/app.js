@@ -6,6 +6,8 @@ import ItemList from '../item-list';
 import ItemImage from '../item-image';
 import ItemDetails from '../item-details';
 import ModalShow from '../modal-show';
+import ItemAddForm from '../item-add-form';
+
 import FORD from '../../img/ford.png';
 import BMW from '../../img/bmw.png';
 import MERCEDES from '../../img/mercedes.png';
@@ -16,6 +18,8 @@ import HYUNDAI from '../../img/hyundai.png';
 import './app.css';
 
 export default class App extends Component {
+
+    maxId = 100;
 
      state = {
         carOptions : [
@@ -76,6 +80,10 @@ export default class App extends Component {
       });
     }; 
 
+    addItem = (text) => {
+      console.log('Added', text);
+    };
+
     onModalShow = () =>{
       this.setState(({modalStatus}) => {
           return {
@@ -129,7 +137,7 @@ export default class App extends Component {
                   onItemSelect={this.handleClick}
                   selected = {selected}
                 />
-                
+                <ItemAddForm onItemAdded = {this.addItem}/>
               </div>
               <div className="col-md-8">
                 <div className="row mt-3">

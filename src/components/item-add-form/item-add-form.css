@@ -1,0 +1,9 @@
+.item-add-form{
+    margin-top: 10px;
+    background-color: #cccccc;
+    padding: 15px 15px;
+}
+
+.item-add-form input{
+    margin-bottom: 10px;
+}
