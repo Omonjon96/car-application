@@ -19,7 +19,7 @@ export default class ItemFilter extends Component {
     };
    
     render(){
-        const {cars} = this.props;
+        // const {cars} = this.props;
         const {status} = this.state;
         return(
             <div className="form-group">

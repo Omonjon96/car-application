@@ -13,7 +13,7 @@ export default class ItemListOption extends Component {
     let classNames = 'list-group-item list-group-item-action pointer';
 
     if(selected){
-      classNames += ' active'
+      classNames += ' active';
     }
 
     return (
