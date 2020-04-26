@@ -12,6 +12,7 @@ export default class ItemAddForm extends Component {
                 <input type="text" placeholder="Enter car owner" className="form-control"/>
                 <input type="number" placeholder="Enter Year" className="form-control"/>
                 <input type="number" placeholder="Enter Pnone Number" className="form-control"/>
+                <input type="file" placeholder="Enter Pnone Number" className="form-control"/>
                 <button className="btn btn-block btn-primary"
                 onClick = {() => this.props.onItemAdded('hello world')}
                 >

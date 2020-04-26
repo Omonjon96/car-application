@@ -19,7 +19,7 @@ import './app.css';
 
 export default class App extends Component {
 
-    maxId = 100;
+    maxId = 6;
 
      state = {
         carOptions : [
@@ -137,7 +137,7 @@ export default class App extends Component {
                   onItemSelect={this.handleClick}
                   selected = {selected}
                 />
-                <ItemAddForm onItemAdded = {this.addItem}/>
+              
               </div>
               <div className="col-md-8">
                 <div className="row mt-3">
@@ -158,6 +158,8 @@ export default class App extends Component {
                 </div>
               </div>
           </div>
+
+          <ItemAddForm onItemAdded = {this.addItem}/>
            {/* <ModalShow 
                     className = "modal-show"
                     modalInfos = {carOptions}
